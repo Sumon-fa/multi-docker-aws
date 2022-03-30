@@ -11,14 +11,14 @@ script:
   - docker run -e CI=true sumon/react-test npm test
 
 after_success:
-  - docker build -t sumon/multi-client ./client
-  - docker build -t sumon/multi-nginx ./nginx
-  - docker build -t sumon/multi-server ./server
-  - docker build -t sumon/multi-worker ./worker
+  - docker build -t docksumon/multi-client ./client
+  - docker build -t docksumon/multi-nginx ./nginx
+  - docker build -t docksumon/multi-server ./server
+  - docker build -t docksumon/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push sumon/multi-client
-  - docker push sumon/multi-nginx
-  - docker push sumon/multi-server
-  - docker push sumon/multi-worker
+  - docker push docksumon/multi-client
+  - docker push docksumon/multi-nginx
+  - docker push docksumon/multi-server
+  - docker push docksumon/multi-worker
