@@ -22,3 +22,15 @@ after_success:
   - docker push docksumon/multi-nginx
   - docker push docksumon/multi-server
   - docker push docksumon/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-central-1'
+  app: 'multi-docker-aws'
+  env: 'Multidockeraws-env'
+  bucket_name: 'elasticbeanstalk-eu-central-1-297107986940'
+  bucket_path: 'multi-docker-aws'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
